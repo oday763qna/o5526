@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مدير المصاريف الشخصية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root, .theme-ocean {
+        --color-primary-start: #0ea5e9; /* sky-500 */
+        --color-primary-end: #0284c7; /* sky-600 */
+        --color-primary-text: #ffffff;
+        --color-accent-start: #14b8a6; /* teal-500 */
+        --color-accent-end: #0d9488; /* teal-600 */
+        --color-accent-text: #ffffff;
+        --color-background: #f0f9ff; /* sky-50 */
+        --color-surface: #ffffff;
+        --color-text-primary: #0c4a6e; /* sky-900 */
+        --color-text-secondary: #64748b; /* slate-500 */
+        --color-border: #e2e8f0; /* slate-200 */
+      }
+      .theme-galaxy {
+        --color-primary-start: #a855f7; /* purple-500 */
+        --color-primary-end: #9333ea; /* purple-600 */
+        --color-primary-text: #ffffff;
+        --color-accent-start: #ec4899; /* pink-500 */
+        --color-accent-end: #db2777; /* pink-600 */
+        --color-accent-text: #ffffff;
+        --color-background: #f5f3ff; /* violet-50 */
+        --color-surface: #ffffff;
+        --color-text-primary: #581c87; /* purple-900 */
+        --color-text-secondary: #64748b; /* slate-500 */
+        --color-border: #e2e8f0; /* slate-200 */
+      }
+      .theme-rose {
+        --color-primary-start: #f43f5e;
+        --color-primary-end: #e11d48;
+        --color-primary-text: #ffffff;
+        --color-accent-start: #f97316;
+        --color-accent-end: #ea580c;
+        --color-accent-text: #ffffff;
+        --color-background: #fff1f2;
+        --color-surface: #ffffff;
+        --color-text-primary: #881337;
+        --color-text-secondary: #64748b;
+        --color-border: #e2e8f0;
+      }
+      .theme-emerald {
+         --color-primary-start: #10b981;
+         --color-primary-end: #059669;
+         --color-primary-text: #ffffff;
+         --color-accent-start: #f59e0b;
+         --color-accent-end: #d97706;
+         --color-accent-text: #ffffff;
+         --color-background: #ecfdf5;
+         --color-surface: #ffffff;
+         --color-text-primary: #064e3b;
+         --color-text-secondary: #64748b;
+         --color-border: #e2e8f0;
+      }
+
+      body {
+        background-color: var(--color-background);
+        background-image: linear-gradient(180deg, var(--color-background) 0%, #ffffff 100%);
+      }
+      
+      /* Keyframes for animations */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes swoopIn {
+        from { opacity: 0; transform: scale(0.9) translateY(10px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+      }
+       @keyframes pulse-glow {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
+        50% { transform: scale(1.05); box-shadow: 0 0 10px 10px rgba(14, 165, 233, 0); }
+      }
+
+      .animate-fadeIn { animation: fadeIn 0.5s ease-in-out forwards; }
+      .animate-fadeInUp { animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+      .animate-swoopIn { animation: swoopIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+      .animate-pulse-glow { animation: pulse-glow 2.5s infinite ease-in-out; }
+
+      /* Custom SVG animation for welcome screen */
+      .wallet-body { animation: fadeInUp 0.8s ease-out; }
+      .wallet-flap { animation: fadeIn 0.5s 0.8s ease-out backwards; }
+      .wallet-card { animation: fadeInUp 0.6s 1s ease-out backwards; }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['Tajawal', 'sans-serif'],
+            },
+            colors: {
+                primary: {
+                  DEFAULT: 'var(--color-primary-start)',
+                  text: 'var(--color-primary-text)',
+                },
+                accent: {
+                  DEFAULT: 'var(--color-accent-start)',
+                  text: 'var(--color-accent-text)',
+                },
+                background: 'var(--color-background)',
+                surface: 'var(--color-surface)',
+                'text-primary': 'var(--color-text-primary)',
+                'text-secondary': 'var(--color-text-secondary)',
+                border: 'var(--color-border)',
+                
+                // Static colors from a refined palette
+                success: '#22c55e', // green-500
+                warning: '#f59e0b', // amber-500
+                error: '#ef4444', // red-500
+                info: '#3b82f6',   // blue-500
+            },
+            backgroundImage: {
+              'gradient-primary': 'linear-gradient(to right, var(--color-primary-start), var(--color-primary-end))',
+              'gradient-accent': 'linear-gradient(to right, var(--color-accent-start), var(--color-accent-end))',
+            }
+          },
+        },
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.3.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="font-sans">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "OD Expense Manager",
+  "description": "A web application to track daily income and expenses and analyze them visually and easily.",
+  "requestFramePermissions": []
+}
